@@ -1,0 +1,21 @@
+<html>
+
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script>
+SC.initialize({
+  client_id: '3841a8fc406be5f2a25c4a248813f7f5'
+});
+
+SC.get('/resolve', {
+  url: 'https://soundcloud.com/calvinharris'
+}, function(user) {
+  console.log(user.id);
+});
+</script>
+
+
+
+
+
+
+<html>

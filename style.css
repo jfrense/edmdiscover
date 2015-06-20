@@ -1,0 +1,10 @@
+.myPlayer {
+    border:1px solid black;
+    font-size:14px;
+    font-family:Arial;
+    padding:10px;
+}
+.myPlayer button {
+    font-size:14px;
+    float:right;   
+}
