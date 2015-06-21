@@ -180,7 +180,7 @@ function queueNextSong(currenttrack){
 
 // produce Iframe of track and queue up iframe of next track to load when current track is finished playing
 function produceIframe(track){
-  var iframestart = '<iframe width="500" height="100" scrolling="no" transparency="false" style="background: #0000;" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+  var iframestart = '<iframe width="100%" height="100" scrolling="no" transparency="false" style="background: #0000;" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 
   var iframeend = '&amp;color=0066cc&amp;inverse=true&amp;auto_play=true&amp;show_user=true"></iframe>';
   
