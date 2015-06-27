@@ -1,6 +1,9 @@
 SC.initialize({
   client_id: 'b45b1aa10f1ac2941910a7f0d10f8e28'
 });
+var songlist = [];
+
+/*
 var myTrack;
 var myTrack2;
 var djlist2 = [208934];
@@ -105,11 +108,7 @@ var djlist = [296190,
 31024
 ];
 
-function giveTrack(track, elementid) {
- SC.oEmbed(track, { auto_play: false , maxheight: 125, maxwidth: 300 },document.getElementById(elementid), function(oEmbed) {
-  console.log(oEmbed.html);
-});
-}
+
 
 var remixList = []
 var songlist = [];
@@ -125,7 +124,7 @@ SC.get('/users/' + djlist[x] + '/tracks',{ limit: 10 }, function(tracks) {
   return new Date(b.created_at) - new Date(a.created_at);
 });
 
-*/
+
  	myTrack = tracks[0].id;
   myTitle = tracks[0].title;
 
@@ -134,11 +133,26 @@ remixList.push(myTitle);
   }
 console.log(remixList);
 console.log(remixList.length);
+*/
 //  var iframestart = '<iframe width="500" height="100" scrolling="no" transparency="false" style="background: #0000;" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 
 //  var iframeend = '&amp;color=0066cc&amp;inverse=true&amp;auto_play=false&amp;show_user=true"></iframe>';
-
+var tab1 = document.getElementById("tab1");
+//var shortTracks = []
+$.getJSON( "http://localhost:3000/api/shorttracks", function( data ) {
+  
+  $.each( data, function( key, val ) {
+   // shortTracks.push(val);
+  var span = '<span id="trackName">' + val.title + '</span>';
+  var button = '<button id="playButton" data-track="' + val._id + '">Play</button>';
+ // var framecode = iframestart + $(this).attr("data-track") + iframeend;
+ // console.log(framecode);
+  var mydiv = '<div class="myPlayer" id=' + val._id + '>' + span + button + '</div>';
+  tab1.insertAdjacentHTML( 'beforeend', mydiv );  
+  songlist.push(val._id);
+});
 // initial load of div objects containing track information (title, artist)
+  /*
   var body = document.getElementById("music");
   var span = '<span id="trackName">' + myTitle + looper + '</span>';
   var button = '<button id="playButton" data-track="' + myTrack + '">Play</button>';
@@ -151,12 +165,27 @@ console.log(remixList.length);
 //  div.insertAdjacentHTML( 'beforeend', framecode );
 
 //  div.insertAdjacentHTML( 'beforeend', b );
-
-  songlist.push(myTrack);
+*/
+//  songlist.push(myTrack);
  //  console.log(songlist);          
-   looper++;
 });
-}
+
+var tab2 = document.getElementById("tab2");
+//var shortTracks = []
+$.getJSON( "http://localhost:3000/api/longtracks", function( data ) {
+  
+  $.each( data, function( key, val ) {
+ //   shortTracks.push(val);
+  var span = '<span id="trackName">' + val.title + '</span>';
+  var button = '<button id="playButton" data-track="' + val._id + '">Play</button>';
+ // var framecode = iframestart + $(this).attr("data-track") + iframeend;
+ // console.log(framecode);
+  var mydiv = '<div class="myPlayer" id=' + val._id + '>' + span + button + '</div>';
+  tab2.insertAdjacentHTML( 'beforeend', mydiv );  
+  songlist.push(val._id);
+});
+});
+
 
 //maybe you should group the two following functions into one. Might be bad code style if two functions call each other repeatedly
 
@@ -203,6 +232,7 @@ $('#music').on('click', '#playButton', function(){
   produceIframe(clickedTrack);
 
 
+});
 
 
 
@@ -228,5 +258,39 @@ $('#music').on('click', '#playButton', function(){
 
 });
 */
+$('#remix').on("click", function(){
+  $('#music').empty();
+  songlist = [];
+    $.each( tracks, function( key, val ) {
+      if (val.title.search(/remix/i) > -1 ) {
+        var span = '<span id="trackName">' + val.title + '</span>';
+  var button = '<button id="playButton" data-track="' + val._id + '">Play</button>';
+ // var framecode = iframestart + $(this).attr("data-track") + iframeend;
+ // console.log(framecode);
+  var mydiv = '<div class="myPlayer" id=' + val._id + '>' + span + button + '</div>';
+  body.insertAdjacentHTML( 'beforeend', mydiv );  
+  songlist.push(val._id);
+
+
+  }
+
+});
+  $('head').append('<link rel="stylesheet" type="text/css" href="style.css">');
+
+
+});
+
+jQuery(document).ready(function() {
+    jQuery('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('href');
+ 
+        // Show/Hide Tabs
+        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+ 
+        // Change/remove current tab to active
+        jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+ 
+        e.preventDefault();
+    });
 });
 

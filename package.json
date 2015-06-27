@@ -1,0 +1,30 @@
+{
+  "name": "edmdiscover",
+  "version": "1.0.0",
+  "description": "edm music discovery ",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jfrense/edmdiscover.git"
+  },
+  "keywords": [
+    "edm",
+    "music",
+    "discovery"
+  ],
+  "author": "Justin Frense",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfrense/edmdiscover/issues"
+  },
+  "homepage": "https://github.com/jfrense/edmdiscover",
+  "dependencies": {
+    "cron": "^1.0.9",
+    "express": "^4.13.0",
+    "python-shell": "^0.1.0"
+  }
+}
