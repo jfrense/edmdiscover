@@ -27,7 +27,7 @@ var options = {
 	pythonPath: 'python3'
 };
 
-new CronJob('*/15 * * * *', function() {
+new CronJob('*/2 * * * *', function() {
 var d = new Date();
 console.log("starting Update at: " + d);
 var shell = new PythonShell('update.py', options);
@@ -45,5 +45,5 @@ shell.end(function (err) {
 }, null, true, 'America/New_York');
 
 
-app.listen(3000);
+app.listen(8081);
 console.log('Listening on port 3000..');

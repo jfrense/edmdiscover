@@ -139,7 +139,7 @@ console.log(remixList.length);
 //  var iframeend = '&amp;color=0066cc&amp;inverse=true&amp;auto_play=false&amp;show_user=true"></iframe>';
 var tab1 = document.getElementById("tab1");
 //var shortTracks = []
-$.getJSON( "http://localhost:3000/api/shorttracks", function( data ) {
+$.getJSON( "http://localhost:8080/api/shorttracks", function( data ) {
   
   $.each( data, function( key, val ) {
    // shortTracks.push(val);
@@ -172,7 +172,7 @@ $.getJSON( "http://localhost:3000/api/shorttracks", function( data ) {
 
 var tab2 = document.getElementById("tab2");
 //var shortTracks = []
-$.getJSON( "http://localhost:3000/api/longtracks", function( data ) {
+$.getJSON( "http://localhost:8080/api/longtracks", function( data ) {
   
   $.each( data, function( key, val ) {
  //   shortTracks.push(val);
